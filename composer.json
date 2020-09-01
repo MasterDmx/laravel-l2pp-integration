@@ -1,0 +1,19 @@
+{
+    "name": "masterdmx/laravel-l2pp-integration",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sergey Krening",
+            "email": "masterdmx3325@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "MasterDmx\\L2ppIntegration\\": "src/"
+        }
+    },
+    "version": "1.0.0",
+    "require": {}
+}
