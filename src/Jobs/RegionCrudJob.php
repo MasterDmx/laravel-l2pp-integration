@@ -1,15 +1,15 @@
 <?php
 
-namespace MasterDmx\L2ppIntegration\Jobs;
+namespace MasterDmx\LaravelL2ppIntegration\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use MasterDmx\L2ppIntegration\UseCases\CityUseCase;
+use MasterDmx\LaravelL2ppIntegration\UseCases\RegionUseCase;
 
-class CrudCityJob implements ShouldQueue
+class RegionCrudJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -24,7 +24,7 @@ class CrudCityJob implements ShouldQueue
         $this->mode = $mode;
     }
 
-    public function handle(CityUseCase $case)
+    public function handle(RegionUseCase $case)
     {
         if ($this->mode === 'create' || $this->mode === 'update') {
             $case->update($this->id);

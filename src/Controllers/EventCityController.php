@@ -1,29 +1,30 @@
 <?php
 
-namespace MasterDmx\L2ppIntegration\Controllers;
+namespace MasterDmx\LaravelL2ppIntegration\Controllers;
 
-use MasterDmx\L2ppIntegration\Jobs\CrudCityJob;
-use MasterDmx\L2ppIntegration\Jobs\SyncAllCitiesJob;
+use MasterDmx\LaravelL2ppIntegration\Jobs\CityCrudJob;
+use MasterDmx\LaravelL2ppIntegration\Jobs\CitySyncJob;
 
 class EventCityController extends EventController
 {
     public function syncAll()
     {
-        $this->dispatch(new SyncAllCitiesJob());
+        $this->dispatch(new CitySyncJob());
     }
 
     public function update()
     {
-        $this->dispatch(new CrudCityJob($this->request->input('id') ?? 0, 'update'));
+        debug_print(12312312);
+        $this->dispatch(new CityCrudJob($this->request->input('id') ?? 0, 'update'));
     }
 
     public function create()
     {
-        $this->dispatch(new CrudCityJob($this->request->input('id') ?? 0, 'create'));
+        $this->dispatch(new CityCrudJob($this->request->input('id') ?? 0, 'create'));
     }
 
     public function destroy()
     {
-        $this->dispatch(new CrudCityJob($this->request->input('id') ?? 0, 'destroy'));
+        $this->dispatch(new CityCrudJob($this->request->input('id') ?? 0, 'destroy'));
     }
 }

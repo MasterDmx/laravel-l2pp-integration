@@ -1,9 +1,9 @@
 <?php
 
-namespace MasterDmx\L2ppIntegration\Repositories;
+namespace MasterDmx\LaravelL2ppIntegration\Repositories;
 
 use Illuminate\Support\Collection;
-use MasterDmx\L2ppIntegration\Core\Repository;
+use MasterDmx\LaravelL2ppIntegration\Components\Repository;
 
 class CityRepository extends Repository
 {

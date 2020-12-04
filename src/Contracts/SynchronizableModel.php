@@ -1,6 +1,6 @@
 <?php
 
-namespace MasterDmx\L2ppIntegration\Contracts;
+namespace MasterDmx\LaravelL2ppIntegration\Contracts;
 
 interface SynchronizableModel
 {

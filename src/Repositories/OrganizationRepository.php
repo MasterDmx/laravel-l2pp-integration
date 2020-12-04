@@ -5,7 +5,7 @@ namespace MasterDmx\LaravelL2ppIntegration\Repositories;
 use Illuminate\Support\Collection;
 use MasterDmx\LaravelL2ppIntegration\Components\Repository;
 
-class RegionRepository extends Repository
+class OrganizationRepository extends Repository
 {
     /**
      * Получить все регионы

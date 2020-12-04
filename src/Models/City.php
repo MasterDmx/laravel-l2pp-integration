@@ -1,13 +1,17 @@
 <?php
 
-namespace MasterDmx\L2ppIntegration\Models;
+namespace MasterDmx\LaravelL2ppIntegration\Models;
 
+use App\Traits\SluggableScope;
 use Illuminate\Database\Eloquent\Model;
-use MasterDmx\L2ppIntegration\Contracts\SynchronizableModel;
+use MasterDmx\LaravelL2ppIntegration\Contracts\SynchronizableModel;
 
 class City extends Model implements SynchronizableModel
 {
+    use SluggableScope;
+
     public $timestamps = false;
+    public $incrementing = false;
 
     protected $table = 'l2pp_cities';
     protected $guarded = [];
@@ -16,5 +20,19 @@ class City extends Model implements SynchronizableModel
     public function getSyncAttributes()
     {
         return $this->syncAttributes;
+    }
+
+    public function getNameWithPretext()
+    {
+        return $this->pretext . ' ' . $this->name_prepositional;
+    }
+
+    // --------------------------------------------------------------
+    // Relations
+    // --------------------------------------------------------------
+
+    public function region()
+    {
+        return $this->belongsTo(Region::class);
     }
 }

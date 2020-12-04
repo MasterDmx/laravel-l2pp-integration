@@ -5,7 +5,7 @@ namespace MasterDmx\LaravelL2ppIntegration\Controllers;
 use MasterDmx\LaravelL2ppIntegration\Jobs\RegionCrudJob;
 use MasterDmx\LaravelL2ppIntegration\Jobs\RegionsAllSyncJob;
 
-class EventRegionController extends EventController
+class EventOrganizationController extends EventController
 {
     public function syncAll()
     {

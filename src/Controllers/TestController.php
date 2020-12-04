@@ -1,10 +1,10 @@
 <?php
 
-namespace MasterDmx\L2ppIntegration\Controllers;
+namespace MasterDmx\LaravelL2ppIntegration\Controllers;
 
 use Illuminate\Routing\Controller;
-use MasterDmx\L2ppIntegration\Repositories\CityRepository;
-use MasterDmx\L2ppIntegration\UseCases\CityUseCase;
+use MasterDmx\LaravelL2ppIntegration\Repositories\CityRepository;
+use MasterDmx\LaravelL2ppIntegration\UseCases\CityUseCase;
 
 class TestController extends Controller
 {
@@ -17,7 +17,7 @@ class TestController extends Controller
     public function syncCity()
     {
         /**
-         * @var \MasterDmx\L2ppIntegration\UseCases\CityUseCase
+         * @var \MasterDmx\LaravelL2ppIntegration\UseCases\CityUseCase
          */
         $case = app(CityUseCase::class);
 

@@ -8,12 +8,12 @@
             "email": "masterdmx3325@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "MasterDmx\\L2ppIntegration\\": "src/"
+            "MasterDmx\\LaravelL2ppIntegration\\": "src/"
         }
     },
-    "version": "1.0.0",
+    "version": "1.0.1",
     "require": {}
 }

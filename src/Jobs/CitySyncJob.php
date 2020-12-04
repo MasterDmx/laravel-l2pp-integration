@@ -1,15 +1,16 @@
 <?php
 
-namespace MasterDmx\L2ppIntegration\Jobs;
+namespace MasterDmx\LaravelL2ppIntegration\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use MasterDmx\L2ppIntegration\UseCases\CityUseCase;
+use Illuminate\Support\Facades\Log;
+use MasterDmx\LaravelL2ppIntegration\UseCases\CityUseCase;
 
-class SyncAllCitiesJob implements ShouldQueue
+class CitySyncJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -17,6 +18,7 @@ class SyncAllCitiesJob implements ShouldQueue
 
     public function handle(CityUseCase $case)
     {
+        Log::debug('Start job CitySyncJob');
         $case->syncAll();
     }
 }

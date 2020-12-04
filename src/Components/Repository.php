@@ -1,6 +1,6 @@
 <?php
 
-namespace MasterDmx\L2ppIntegration\Core;
+namespace MasterDmx\LaravelL2ppIntegration\Components;
 
 class Repository
 {

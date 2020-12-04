@@ -14,8 +14,8 @@ class CreateL2ppCitiesTable extends Migration
     public function up()
     {
         Schema::create('l2pp_cities', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('region_id');
+            $table->unsignedSmallInteger('id')->primary();
+            $table->unsignedSmallInteger('region_id')->index();
             $table->string('slug', 100)->unique();
             $table->string('name', 100);
             $table->string('name_genitive', 100)->default('');

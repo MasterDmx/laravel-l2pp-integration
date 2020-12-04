@@ -14,7 +14,7 @@ class CreateL2ppRegionsTable extends Migration
     public function up()
     {
         Schema::create('l2pp_regions', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedSmallInteger('id')->primary();
             $table->string('slug', 100)->default('');
             $table->string('name', 100)->default('');
             $table->string('name_genitive', 100)->default('');

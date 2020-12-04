@@ -1,25 +1,29 @@
 <?php
 
-namespace MasterDmx\L2ppIntegration\UseCases;
+namespace MasterDmx\LaravelL2ppIntegration\UseCases;
 
-use MasterDmx\L2ppIntegration\Models\City;
-use MasterDmx\L2ppIntegration\Repositories\CityRepository;
-use MasterDmx\L2ppIntegration\Services\SyncModelService;
+use MasterDmx\LaravelL2ppIntegration\Events\CityCreatedEvent;
+use MasterDmx\LaravelL2ppIntegration\Events\CityRemovedEvent;
+use MasterDmx\LaravelL2ppIntegration\Events\CitySyncedAllEvent;
+use MasterDmx\LaravelL2ppIntegration\Events\CityUpdatedEvent;
+use MasterDmx\LaravelL2ppIntegration\Models\City;
+use MasterDmx\LaravelL2ppIntegration\Repositories\CityRepository;
+use MasterDmx\LaravelL2ppIntegration\Services\SyncModelService;
 
 class CityUseCase
 {
     /**
-     * @var \MasterDmx\L2ppIntegration\Repositories\CityRepository
+     * @var \MasterDmx\LaravelL2ppIntegration\Repositories\CityRepository
      */
     private $repository;
 
     /**
-     * @var \MasterDmx\L2ppIntegration\Models\City
+     * @var \MasterDmx\LaravelL2ppIntegration\Models\City
      */
     private $model;
 
     /**
-     * @var \MasterDmx\L2ppIntegration\Services\SyncModelService
+     * @var \MasterDmx\LaravelL2ppIntegration\Services\SyncModelService
      */
     private $syncService;
 
@@ -49,23 +53,32 @@ class CityUseCase
 
             // Выполняем запись всех городов в БД
             $this->model->insert($cities->toArray());
+
+            event(new CitySyncedAllEvent());
+        }
+    }
+
+    public function create(int $id)
+    {
+        if ($city = $this->repository->find($id)) {
+            $this->model->destroy($id);
+            $this->model->create($city);
+            event(new CityCreatedEvent($id));
         }
     }
 
     public function update(int $id)
     {
-        // Получаем данные с L2PP
         if ($city = $this->repository->find($id)) {
-            // Удаляем локальный город
             $this->model->destroy($id);
-
-            // Записываем данные
             $this->model->create($city);
+            event(new CityUpdatedEvent($id));
         }
     }
 
     public function destroy(int $id)
     {
         $this->model->destroy($id);
+        event(new CityRemovedEvent($id));
     }
 }
